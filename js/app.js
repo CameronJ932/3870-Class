@@ -11,6 +11,7 @@ async function getWeatherData(){
     }
     )
 
+    //Thing
     if(!objResponse.ok){
         alert('Error getting data')
     } else{
