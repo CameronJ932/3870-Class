@@ -18,14 +18,14 @@ async function getWeatherData(num){
         const objData = await objResponse.json()
         //console.log(objData.current.temperature_2m)
         document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
-        let strMaxTemp = objData.current.temperature_2m_max
-        let strMinTemp = objData.current.temperature_2m_min
-        let strMeanTemp = objData.daily.temperature_2m_mean
+        let strMaxTemp = objData.daily.temperature_2m_max[0]
+        let strMinTemp = objData.daily.temperature_2m_min[0]
+        //let strMeanTemp = objData.daily.temperature_2m_mean[0]
         //let strMeanTemp = objData.daily.temperature_2m_mean[0]
         document.querySelector('#lblLow').innerHTML = strMinTemp + '°'
         document.querySelector('#lblHigh').innerHTML = strMaxTemp + '°'
-        document.querySelector('#lblMean').innerHTML = strMeanTemp + '°'
-        let strCurrentWeatherCode = objData.current.weather_code[0]
+        //document.querySelector('#lblMean').innerHTML = strMeanTemp + '°'
+        let strCurrentWeatherCode = objData.current.weather_code
         /*if(strCurrentWeatherCode < 4)
         {
 
