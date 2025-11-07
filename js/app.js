@@ -21,7 +21,6 @@ async function getWeatherData(num){
         let strMaxTemp = objData.daily.temperature_2m_max[0]
         let strMinTemp = objData.daily.temperature_2m_min[0]
         //let strMeanTemp = objData.daily.temperature_2m_mean[0]
-        //let strMeanTemp = objData.daily.temperature_2m_mean[0]
         document.querySelector('#lblLow').innerHTML = strMinTemp + '°'
         document.querySelector('#lblHigh').innerHTML = strMaxTemp + '°'
         //document.querySelector('#lblMean').innerHTML = strMeanTemp + '°'
@@ -35,22 +34,22 @@ async function getWeatherData(num){
             document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-brightness-high"></i>'
         }
 
-        if([45,48].includes(strCurrentWeatherCode))
+        else if([45,48].includes(strCurrentWeatherCode))
         {
             document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-cloud-haze"></i>'
         }
         
-        if([51,53,55,56,57,61,63,65,66,67,80,81,82,].includes(strCurrentWeatherCode))
+        else if([51,53,55,56,57,61,63,65,66,67,80,81,82,].includes(strCurrentWeatherCode))
         {
             document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-cloud-rain"></i>'
         }
 
-        if([71,73,75,77,].includes(strCurrentWeatherCode))
+        else if([71,73,75,77,].includes(strCurrentWeatherCode))
         {
             document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-snow"></i>'
         }
 
-        if([95,96,99,].includes(strCurrentWeatherCode))
+        else if([95,96,99,].includes(strCurrentWeatherCode))
         {
             document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-cloud-lightning-rain"></i>'
         }
