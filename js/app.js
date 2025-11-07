@@ -1,4 +1,4 @@
-const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.1693184&longitude=-85.508096&daily=temperature_2m_max,temperature_2m_min,weather_code,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,precipitation_probability,weather_code,cloud_cover,soil_temperature_0cm,wind_speed_10m,wind_speed_80m,wind_direction_10m,wind_direction_80m,wind_gusts_10m,soil_moisture_0_to_1cm,visibility,uv_index,is_day&current=temperature_2m,relative_humidity_2m,is_day,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,weather_code,cloud_cover&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch'
+const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.1693184&longitude=-85.508096&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weather_code,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,precipitation_probability,weather_code,cloud_cover,soil_temperature_0cm,wind_speed_10m,wind_speed_80m,wind_direction_10m,wind_direction_80m,wind_gusts_10m,soil_moisture_0_to_1cm,visibility,uv_index,is_day&current=temperature_2m,relative_humidity_2m,is_day,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,weather_code,cloud_cover&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch'
 
 getWeatherData();
 async function getWeatherData(num){
@@ -20,10 +20,9 @@ async function getWeatherData(num){
         document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
         let strMaxTemp = objData.daily.temperature_2m_max[0]
         let strMinTemp = objData.daily.temperature_2m_min[0]
-        //let strMeanTemp = objData.daily.temperature_2m_mean[0]
         document.querySelector('#lblLow').innerHTML = strMinTemp + '°'
         document.querySelector('#lblHigh').innerHTML = strMaxTemp + '°'
-        //document.querySelector('#lblMean').innerHTML = strMeanTemp + '°'
+        document.querySelector('#lblMean').innerHTML = objData.daily.temperature_2m_mean[1] + '°'
         let strCurrentWeatherCode = objData.current.weather_code
         /*if(strCurrentWeatherCode < 4)
         {
