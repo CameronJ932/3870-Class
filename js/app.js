@@ -29,33 +29,23 @@ async function getWeatherData(num){
         document.querySelector('#lblMean5').innerHTML = objData.daily.temperature_2m_mean[5] + '°'
         document.querySelector('#lblMean6').innerHTML = objData.daily.temperature_2m_mean[6] + '°'
         let strCurrentWeatherCode = objData.current.weather_code
-        /*if(strCurrentWeatherCode < 4)
-        {
+        let strDailyWeatherCodes = objData.daily.weather_code
 
-        }*/
-        if([0,1,2,3,].includes(strCurrentWeatherCode))
-        {
-            document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-brightness-high"></i>'
+        function getWeatherIcon(day) {
+            if([0,1,2,3].includes(strDailyWeatherCodes[day])) return 'bi-brightness-high';
+            if([45,48].includes(strDailyWeatherCodes[day])) return 'bi-cloud-haze';
+            if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) return 'bi-cloud-rain';
+            if([71,73,75,77].includes(strDailyWeatherCodes[day])) return 'bi-snow';
+            if([95,96,99].includes(strDailyWeatherCodes[day])) return 'bi-cloud-lightning-rain';
+            return 'bi-cloud'; // default icon
         }
 
-        else if([45,48].includes(strCurrentWeatherCode))
-        {
-            document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-cloud-haze"></i>'
-        }
-        
-        else if([51,53,55,56,57,61,63,65,66,67,80,81,82,].includes(strCurrentWeatherCode))
-        {
-            document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-cloud-rain"></i>'
-        }
+        // Set current weather icon
+        document.querySelector('#lblIcon').innerHTML = `<i class="bi ${getWeatherIcon(strCurrentWeatherCode)}"></i>`;
 
-        else if([71,73,75,77,].includes(strCurrentWeatherCode))
-        {
-            document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-snow"></i>'
-        }
-
-        else if([95,96,99,].includes(strCurrentWeatherCode))
-        {
-            document.querySelector('#lblIcon').innerHTML = '<i class="bi bi-cloud-lightning-rain"></i>'
+        // Set daily weather icons for each day
+        for(let i = 1; i <= 6; i++) {
+            document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
         }
     }
 }
