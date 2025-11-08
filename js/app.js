@@ -16,6 +16,12 @@ async function getWeatherData(num){
         alert('Error getting data')
     } else{
         const objData = await objResponse.json()
+        
+        // Set current date
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.querySelector('#currentDate').innerHTML = today.toLocaleDateString('en-US', options);
+        
         //console.log(objData.current.temperature_2m)
         document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
         let strMaxTemp = objData.daily.temperature_2m_max[0]
