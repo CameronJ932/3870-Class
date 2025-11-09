@@ -31,6 +31,8 @@ async function getWeatherData(num){
         let strCurrentWeatherCode = objData.current.weather_code
         let strDailyWeatherCodes = objData.daily.weather_code
 
+        
+
         function getWeatherIcon(day) {
             if([0,1,2,3].includes(strDailyWeatherCodes[day])) return 'bi-brightness-high';
             if([45,48].includes(strDailyWeatherCodes[day])) return 'bi-cloud-haze';
