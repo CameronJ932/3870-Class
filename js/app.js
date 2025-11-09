@@ -17,15 +17,19 @@ async function getWeatherData(num){
     } else{
         const objData = await objResponse.json()
         
-        // Set current date
-        const today = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.querySelector('#currentDate').innerHTML = today.toLocaleDateString('en-US', options);
         
-        //console.log(objData.current.temperature_2m)
-        document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
+        // Set current date
+        let day = objData.daily.time
+
+        // setting up our lets so we can call what we need
         let strMaxTemp = objData.daily.temperature_2m_max[0]
         let strMinTemp = objData.daily.temperature_2m_min[0]
+        let strCurrentWeatherCode = objData.current.weather_code
+        let strDailyWeatherCodes = objData.daily.weather_code
+        document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
+
+        // injecting our weather data
+        document.querySelector('#date').innerHTML = day[0]
         document.querySelector('#lblLow').innerHTML = strMinTemp + '°'
         document.querySelector('#lblHigh').innerHTML = strMaxTemp + '°'
         document.querySelector('#lblMean1').innerHTML = objData.daily.temperature_2m_mean[1] + '°'
@@ -34,24 +38,39 @@ async function getWeatherData(num){
         document.querySelector('#lblMean4').innerHTML = objData.daily.temperature_2m_mean[4] + '°'
         document.querySelector('#lblMean5').innerHTML = objData.daily.temperature_2m_mean[5] + '°'
         document.querySelector('#lblMean6').innerHTML = objData.daily.temperature_2m_mean[6] + '°'
-        let strCurrentWeatherCode = objData.current.weather_code
-        let strDailyWeatherCodes = objData.daily.weather_code
-
-        function getWeatherIcon(day) {
-            if([0,1,2,3].includes(strDailyWeatherCodes[day])) return 'bi-brightness-high';
-            if([45,48].includes(strDailyWeatherCodes[day])) return 'bi-cloud-haze';
-            if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) return 'bi-cloud-rain';
-            if([71,73,75,77].includes(strDailyWeatherCodes[day])) return 'bi-snow';
-            if([95,96,99].includes(strDailyWeatherCodes[day])) return 'bi-cloud-lightning-rain';
-            return 'bi-cloud'; // default icon
-        }
-
-        // Set current weather icon
         document.querySelector('#lblIcon').innerHTML = `<i class="bi ${getWeatherIcon(strCurrentWeatherCode)}"></i>`;
 
-        // Set daily weather icons for each day
+            
+        // Loop through getWeatherIcon function to get the proper icon
         for(let i = 1; i <= 6; i++) {
             document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
+        }
+        
+
+        //fucntion to determine what Icon to use based on weather code
+        function getWeatherIcon(day) {
+            if([0,1,2,3].includes(strDailyWeatherCodes[day]))
+            {
+                 return 'bi-brightness-high';
+            }
+            if([45,48].includes(strDailyWeatherCodes[day])) 
+            {
+                return 'bi-cloud-haze';
+            }
+            if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) 
+            {
+                return 'bi-cloud-rain';
+            }
+            if([71,73,75,77].includes(strDailyWeatherCodes[day])) 
+            {
+                return 'bi-snow';
+            }
+            if([95,96,99].includes(strDailyWeatherCodes[day])) 
+            {
+                return 'bi-cloud-lightning-rain';
+            }
+            // show cloud as default
+            return 'bi-cloud'; 
         }
     }
 }
