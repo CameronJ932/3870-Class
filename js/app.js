@@ -38,8 +38,7 @@ async function getWeatherData(num){
         document.querySelector('#lblMean4').innerHTML = objData.daily.temperature_2m_mean[4] + '°'
         document.querySelector('#lblMean5').innerHTML = objData.daily.temperature_2m_mean[5] + '°'
         document.querySelector('#lblMean6').innerHTML = objData.daily.temperature_2m_mean[6] + '°'
-        let strCurrentWeatherCode = objData.current.weather_code
-        let strDailyWeatherCodes = objData.daily.weather_code
+
 
         
 
