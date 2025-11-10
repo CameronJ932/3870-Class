@@ -1,20 +1,25 @@
 const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.1693184&longitude=-85.508096&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean,weather_code,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,precipitation_probability,weather_code,cloud_cover,soil_temperature_0cm,wind_speed_10m,wind_speed_80m,wind_direction_10m,wind_direction_80m,wind_gusts_10m,soil_moisture_0_to_1cm,visibility,uv_index,is_day&current=temperature_2m,relative_humidity_2m,is_day,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,weather_code,cloud_cover&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch'
 
 getWeatherData();
-async function getWeatherData(num){
+async function getWeatherData(num)
+{
     const objResponse = await fetch(strWeatherAPIURL,
     {
         method:'GET',
-        headers: {
+        headers: 
+        {
             'Content-Type':'application/json'
         }
     }
     )
 
     //Thing
-    if(!objResponse.ok){
+    if(!objResponse.ok)
+    {
         alert('Error getting data')
-    } else{
+    } 
+    else
+    {
         const objData = await objResponse.json()
         
         
@@ -42,13 +47,15 @@ async function getWeatherData(num){
 
             
         // Loop through getWeatherIcon function to get the proper icon
-        for(let i = 1; i <= 6; i++) {
+        for(let i = 1; i <= 6; i++) 
+        {
             document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
         }
         
 
         //fucntion to determine what Icon to use based on weather code
-        function getWeatherIcon(day) {
+        function getWeatherIcon(day) 
+        {
             if([0,1,2,3].includes(strDailyWeatherCodes[day]))
             {
                  return 'bi-brightness-high';
