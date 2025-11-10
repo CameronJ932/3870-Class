@@ -43,6 +43,21 @@ async function getWeatherData(num)
         document.querySelector('#lblMean4').innerHTML = objData.daily.temperature_2m_mean[4] + '°'
         document.querySelector('#lblMean5').innerHTML = objData.daily.temperature_2m_mean[5] + '°'
         document.querySelector('#lblMean6').innerHTML = objData.daily.temperature_2m_mean[6] + '°'
+        let strCurrentWeatherCode = objData.current.weather_code
+        let strDailyWeatherCodes = objData.daily.weather_code
+
+        
+
+        function getWeatherIcon(day) {
+            if([0,1,2,3].includes(strDailyWeatherCodes[day])) return 'bi-brightness-high';
+            if([45,48].includes(strDailyWeatherCodes[day])) return 'bi-cloud-haze';
+            if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) return 'bi-cloud-rain';
+            if([71,73,75,77].includes(strDailyWeatherCodes[day])) return 'bi-snow';
+            if([95,96,99].includes(strDailyWeatherCodes[day])) return 'bi-cloud-lightning-rain';
+            return 'bi-cloud'; // default icon
+        }
+
+        // Set current weather icon
         document.querySelector('#lblIcon').innerHTML = `<i class="bi ${getWeatherIcon(strCurrentWeatherCode)}"></i>`;
 
             
