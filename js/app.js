@@ -48,20 +48,18 @@ async function getWeatherData(num){
             if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) return 'bi-cloud-rain';
             if([71,73,75,77].includes(strDailyWeatherCodes[day])) return 'bi-snow';
             if([95,96,99].includes(strDailyWeatherCodes[day])) return 'bi-cloud-lightning-rain';
-            return 'bi-cloud'; // default icon
+            return 'bi-cloud'; 
         }
 
-        // Set current weather icon
+
         document.querySelector('#lblIcon').innerHTML = `<i class="bi ${getWeatherIcon(strCurrentWeatherCode)}"></i>`;
 
             
-        // Loop through getWeatherIcon function to get the proper icon
         for(let i = 1; i <= 6; i++) {
             document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
         }
         
 
-        //fucntion to determine what Icon to use based on weather code
         function getWeatherIcon(day) {
             if([0,1,2,3].includes(strDailyWeatherCodes[day]))
             {
@@ -83,7 +81,7 @@ async function getWeatherData(num){
             {
                 return 'bi-cloud-lightning-rain';
             }
-            // show cloud as default
+
             return 'bi-cloud'; 
         }
     }
