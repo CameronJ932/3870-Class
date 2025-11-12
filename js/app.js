@@ -4,13 +4,13 @@ getWeatherData();
 async function getWeatherData(num)
 {
     const objResponse = await fetch(strWeatherAPIURL,
-    {
-        method:'GET',
-        headers: 
         {
-            'Content-Type':'application/json'
+            method:'GET',
+            headers: 
+            {
+                'Content-Type':'application/json'
+            }
         }
-    }
     )
 
     //Thing
@@ -82,32 +82,34 @@ async function getWeatherData(num)
             document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
         }
 
-        function getWeatherIcon(day) {
-        //fucntion to determine what Icon to use based on weather code
         function getWeatherIcon(day) 
         {
-            if([0,1,2,3].includes(strDailyWeatherCodes[day]))
+            //fucntion to determine what Icon to use based on weather code
+            function getWeatherIcon(day) 
             {
-                return 'bi-brightness-high';
-            }
-            if([45,48].includes(strDailyWeatherCodes[day])) 
-            {
-                return 'bi-cloud-haze';
-            }
-            if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) 
-            {
-                return 'bi-cloud-rain';
-            }
-            if([71,73,75,77].includes(strDailyWeatherCodes[day])) 
-            {
-                return 'bi-snow';
-            }
-            if([95,96,99].includes(strDailyWeatherCodes[day])) 
-            {
-                return 'bi-cloud-lightning-rain';
-            }
+                if([0,1,2,3].includes(strDailyWeatherCodes[day]))
+                {
+                    return 'bi-brightness-high';
+                }
+                if([45,48].includes(strDailyWeatherCodes[day])) 
+                {
+                    return 'bi-cloud-haze';
+                }
+                if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) 
+                {
+                    return 'bi-cloud-rain';
+                }
+                if([71,73,75,77].includes(strDailyWeatherCodes[day])) 
+                {
+                    return 'bi-snow';
+                }
+                if([95,96,99].includes(strDailyWeatherCodes[day])) 
+                {
+                    return 'bi-cloud-lightning-rain';
+                }
 
-            return 'bi-cloud'; 
+                return 'bi-cloud'; 
+            }
         }
     }
 }
