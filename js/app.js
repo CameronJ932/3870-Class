@@ -53,6 +53,7 @@ async function getWeatherData(num)
             document.querySelector(`#lblMean${i}`).classList.add(getWeatherColor(strDailyMeanTemp[i]));
         }
 
+
         
 
         function getWeatherColor(temp)
@@ -81,6 +82,7 @@ async function getWeatherData(num)
             document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
         }
 
+        function getWeatherIcon(day) {
         //fucntion to determine what Icon to use based on weather code
         function getWeatherIcon(day) 
         {
@@ -104,7 +106,7 @@ async function getWeatherData(num)
             {
                 return 'bi-cloud-lightning-rain';
             }
-            // show cloud as default
+
             return 'bi-cloud'; 
         }
     }
