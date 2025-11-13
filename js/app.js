@@ -4,13 +4,13 @@ getWeatherData();
 async function getWeatherData(num)
 {}
     const objResponse = await fetch(strWeatherAPIURL,
-    {
-        method:'GET',
-        headers: 
         {
-            'Content-Type':'application/json'
+            method:'GET',
+            headers: 
+            {
+                'Content-Type':'application/json'
+            }
         }
-    }
     )
 
     //Thing
@@ -31,50 +31,63 @@ async function getWeatherData(num)
         let strMinTemp = objData.daily.temperature_2m_min[0]
         let strCurrentWeatherCode = objData.current.weather_code
         let strDailyWeatherCodes = objData.daily.weather_code
-        document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
+        let strDailyMeanTemp = objData.daily.temperature_2m_mean
 
         // injecting our weather data
         document.querySelector('#date').innerHTML = day[0]
         document.querySelector('#lblLow').innerHTML = strMinTemp + '°'
         document.querySelector('#lblHigh').innerHTML = strMaxTemp + '°'
+        document.querySelector('#lblCurrentTemp').innerHTML = objData.current.temperature_2m + '°'
         document.querySelector('#lblMean1').innerHTML = objData.daily.temperature_2m_mean[1] + '°'
         document.querySelector('#lblMean2').innerHTML = objData.daily.temperature_2m_mean[2] + '°'
         document.querySelector('#lblMean3').innerHTML = objData.daily.temperature_2m_mean[3] + '°'
         document.querySelector('#lblMean4').innerHTML = objData.daily.temperature_2m_mean[4] + '°'
         document.querySelector('#lblMean5').innerHTML = objData.daily.temperature_2m_mean[5] + '°'
         document.querySelector('#lblMean6').innerHTML = objData.daily.temperature_2m_mean[6] + '°'
+        document.querySelector('#lblIcon').innerHTML = `<i class="bi ${getWeatherIcon(strCurrentWeatherCode)}"></i>`;
+        //document.querySelector('#lblMeanColor').innerHTML = `<i class="bi ${getWeatherColor(strDailyMeanTemp)}"></i>`;
+
+        for(let i = 1; i <= 6; i++) 
+        {
+            document.querySelector(`#lblMean${i}`).classList.remove('temp-hot', 'temp-warm', 'temp-cold', 'temp-cool');
+            document.querySelector(`#lblMean${i}`).classList.add(getWeatherColor(strDailyMeanTemp[i]));
+        }
 
 
         
 
-        function getWeatherIcon(day) {
-            if([0,1,2,3].includes(strDailyWeatherCodes[day])) return 'bi-brightness-high';
-            if([45,48].includes(strDailyWeatherCodes[day])) return 'bi-cloud-haze';
-            if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(strDailyWeatherCodes[day])) return 'bi-cloud-rain';
-            if([71,73,75,77].includes(strDailyWeatherCodes[day])) return 'bi-snow';
-            if([95,96,99].includes(strDailyWeatherCodes[day])) return 'bi-cloud-lightning-rain';
-            return 'bi-cloud'; 
+        function getWeatherColor(temp)
+        {
+            if(temp < 60)
+            {
+                return "temp-cold";
+            }
+            if(temp < 70)
+            {
+                return "temp-cool";
+            }
+            if(temp >= 80)
+            {
+                return "temp-hot";
+            }
+            else
+            {
+                return "temp-warm";
+            }
         }
-
-
-        document.querySelector('#lblIcon').innerHTML = `<i class="bi ${getWeatherIcon(strCurrentWeatherCode)}"></i>`;
-
-            
-        for(let i = 1; i <= 6; i++) {
+     
         // Loop through getWeatherIcon function to get the proper icon
         for(let i = 1; i <= 6; i++) 
         {
             document.querySelector(`#lblDIcon${i}`).innerHTML = `<i class="bi ${getWeatherIcon(strDailyWeatherCodes[i])}"></i>`;
         }
-        
 
-        function getWeatherIcon(day) {
-        //fucntion to determine what Icon to use based on weather code
         function getWeatherIcon(day) 
         {
+            //fucntion to determine what Icon to use based on weather code
             if([0,1,2,3].includes(strDailyWeatherCodes[day]))
             {
-                 return 'bi-brightness-high';
+                return 'bi-brightness-high';
             }
             if([45,48].includes(strDailyWeatherCodes[day])) 
             {
@@ -94,6 +107,7 @@ async function getWeatherData(num)
             }
 
             return 'bi-cloud'; 
+            
         }
     }
 }
