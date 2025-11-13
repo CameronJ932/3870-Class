@@ -18,8 +18,6 @@ const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.169
                 } 
 
                 const objData = await objResponse.json()
-                
-                // --- Helper Function ---
   
                 function getWeatherIcon(code) {
                     // This function now takes the weather CODE
@@ -31,7 +29,6 @@ const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.169
                     if ([95, 96, 99].includes(code)) return 'bi-cloud-lightning-rain'
                     return 'bi-cloud'; // default icon
                 }
-                // --- End Helper Function ---
 
                 
                 // Set current date
@@ -52,8 +49,6 @@ const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.169
                 document.querySelector('#lblHigh').innerHTML = strMaxTemp + '°'
                 document.querySelector('#lblCurrentTemp').innerHTML = strCurrentTemp + '°'
                 document.querySelector('#lblIcon').innerHTML = '<i class="bi ' + getWeatherIcon(strCurrentWeatherCode) + '"></i>'
-                
-
 
                 // Loop for the 6-day forecast
                 for(let i = 1; i <= 6; i++) {
@@ -69,7 +64,7 @@ const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.169
                 }
             
             } catch (error) {
-                console.error("Failed to get weather data:", error);
+                console.error("Failed to get weather data:", error)
             }
         }
     
