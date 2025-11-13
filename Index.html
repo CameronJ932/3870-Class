@@ -10,7 +10,7 @@
     <style>
 
         .body {
-            background-image: linear-gradient(to top, #0d2568, #66bff4);
+            background-image: linear-gradient(to top, #1c880c, #66bff4);
             min-height: 100vh;
         }
 
@@ -36,6 +36,23 @@
             font-weight: 500;
         }
 
+        .cloud {
+            position: absolute;
+            color: white;
+            z-index: 0;
+        }
+        .cloud-right {
+            position: absolute;
+            right: 0;
+            color: white;
+            z-index: 0;
+        }
+
+        .text {
+            position: relative;
+            z-index: 1;
+        }
+
         /*Temperature Bubble Roudness */
         .tempbubble {
             /*background-color: #f59e0b;*/
@@ -57,30 +74,38 @@
     </style>
 </head>
 <body class="bg-dark">
-    <div class="vh-100 d-flex justify-content-center">
+    <div class="d-flex justify-content-center scrollable-content">
         <div class="card col-12 col-md-6 col-lg-4">
             <div class="card-body body">
-                <div class="d-flex justify-content-center">
+
+                <span><i class="bi bi-cookie cloud" style="font-size: 200px;"></i></span>
+
+                <div class="d-flex justify-content-center text">
                     <h2 style="font-size: 35px;">Cookeville</h2>
                 </div>
-                <div class="d-flex justify-content-center">
+                
+                <div class="d-flex justify-content-center text">
                     <span id="lblIcon" style="font-size: 130px"></span>
                 </div>
-                <div class="d-flex justify-content-center">
+
+                <span><i class="bi bi-cookie cloud-right" style="font-size: 200px;"></i></span>
+
+                <div class="d-flex justify-content-center text">
                     <h1 style="font-size: 25px;" id="date"></h1>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center text">
                     <h1 class="ms-1 my-2" style="font-size: 86px" id="lblCurrentTemp">°</h1>
                 </div>
                 <div>
-                    <p class="text-center" style="font-size: 25px"><span id="lblLow"></span> - <span id="lblHigh"></span></p>
+                    <p class="text-center text" style="font-size: 25px"><span id="lblLow"></span> - <span id="lblHigh"></span></p>
                 </div>
+                
                 
                 <!--This is the holder for the forecast -->
             <div>
-              <div class="forecast-header px-4 py-2 mb-3">
+              <div class="forecast-header px-4 py-2 mb-3 text">
                     <div class="justify-content-left">
-                        <h2 class="text-center text-white mb-0">6 day forecast </h2> 
+                        <h2 class="text-center text-white mb-2">6 day forecast </h2> 
                     </div> 
                     <!--Container for the Forecast List -->  
                     <div class="d-flex flex-column gap-2"></div>
@@ -91,31 +116,31 @@
                             <span id="lblDIcon1"></span>
                         </div>
 
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
+                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2 mt-2">
                             <span class="text-center">Day 2</span>
                             <span id="lblMean2" class="tempbubble">20°</span>
                             <span id="lblDIcon2"></span>
                         </div>
 
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
+                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2 mt-2">
                             <span class="text-center">Day 3</span>
                             <span id="lblMean3" class="tempbubble">20°</span>
                             <span id="lblDIcon3"></span>
                         </div>
 
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
+                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2 mt-2">
                             <span class="text-center">Day 4</span>
                             <span id="lblMean4" class="tempbubble">20°</span>
                             <span id="lblDIcon4"></span>
                         </div>
 
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
+                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2 mt-2">
                             <span class="text-center">Day 5</span>
                             <span id="lblMean5" class="tempbubble">20°</span>
                             <span id="lblDIcon5"></span>
                         </div>
 
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
+                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2 mt-2 mb-3">
                             <span class="text-center">Day 6</span>
                             <span id="lblMean6" class="tempbubble">20°</span>
                             <span id="lblDIcon6"></span>
