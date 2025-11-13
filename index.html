@@ -14,6 +14,11 @@
             min-height: 100vh;
         }
 
+         body.app-background {
+            background-image: linear-gradient(to top, #0d2568, #66bff4);
+            min-height: 100vh;
+        }
+
         /*Main Card */
         .weather-card {
             background-color: rgba(10, 45, 91, 0.5); 
@@ -28,38 +33,13 @@
             border-radius: 2rem; 
         }
 
-        /* Style for each day in the forecast */
-        .forecast-item {
-            background-color: rgba(255, 255, 255, 0.9); 
-            border-radius: 9999px; 
-            color: #333;
-            font-weight: 500;
-        }
-
-        /*Temperature Bubble Roudness */
-        .tempbubble {
-            /*background-color: #f59e0b;*/
-            border-radius: 50% ;
-            width: 50px;
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-        }
-
-        /* Bubble Colors */
-        .temp-hot { background-color: #ef4444; }
-        .temp-warm { background-color: #f59e0b; } 
-        .temp-cold { background-color: #3b82f6; } 
-        .temp-cool { background-color: #60a5fa; }
-
+       
     </style>
 </head>
-<body class="bg-dark">
-    <div class="vh-100 d-flex justify-content-center">
-        <div class="card col-12 col-md-6 col-lg-4">
-            <div class="card-body body">
+<body class="app-background">
+    <div class="min-vh-100 d-flex justify-content-center align-items-center p-3">
+        <div class="card weather-card text-white col-11 col-md-7 col-lg-4">
+            <div class="card-body">
                 <div class="d-flex justify-content-center">
                     <h2 style="font-size: 35px;">Cookeville</h2>
                 </div>
@@ -67,7 +47,7 @@
                     <span id="lblIcon" style="font-size: 130px"></span>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <h1 style="font-size: 25px;" id="date"></h1>
+                    <h1 style="font-size: 25px;" id="date" class="text-white"></h1>
                 </div>
                 <div class="d-flex justify-content-center">
                     <h1 class="ms-1 my-2" style="font-size: 86px" id="lblCurrentTemp">°</h1>
@@ -77,60 +57,50 @@
                 </div>
                 
                 <!--This is the holder for the forecast -->
-            <div>
-              <div class="forecast-header px-4 py-2 mb-3">
-                    <div class="justify-content-left">
-                        <h2 class="text-center text-white mb-0">6 day forecast </h2> 
-                    </div> 
+                <div>
+                    <div class="forecast-header px-4 py-2 mb-3">
+                        <div class="justify-content-left">
+                            <h2 class="text-center text-white mb-0">6 day forecast </h2> 
+                        </div> 
                     <!--Container for the Forecast List -->  
-                    <div class="d-flex flex-column gap-2"></div>
+                    <div class="mt-3">
                     
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
-                            <span class="text-center">Day 1</span>
-                            <span id="lblMean1" class="tempbubble">20°</span>
-                            <span id="lblDIcon1"></span>
-                        </div>
-
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
-                            <span class="text-center">Day 2</span>
-                            <span id="lblMean2" class="tempbubble">20°</span>
-                            <span id="lblDIcon2"></span>
-                        </div>
-
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
-                            <span class="text-center">Day 3</span>
-                            <span id="lblMean3" class="tempbubble">20°</span>
-                            <span id="lblDIcon3"></span>
-                        </div>
-
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
-                            <span class="text-center">Day 4</span>
-                            <span id="lblMean4" class="tempbubble">20°</span>
-                            <span id="lblDIcon4"></span>
-                        </div>
-
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
-                            <span class="text-center">Day 5</span>
-                            <span id="lblMean5" class="tempbubble">20°</span>
-                            <span id="lblDIcon5"></span>
-                        </div>
-
-                        <div class = "forecast-item d-flex justify-content-between align-items-center p-2">
-                            <span class="text-center">Day 6</span>
-                            <span id="lblMean6" class="tempbubble">20°</span>
-                            <span id="lblDIcon6"></span>
-                        </div>
-
+                        <p class="text-center fs-5 mb-2">
+                                <span id="lblDay1">Day 1</span>:
+                                <span id="lblMean1">--°</span>
+                                <span id="lblDIcon1"></span>
+                            </p>
+                            <p class="text-center fs-5 mb-2">
+                                <span id="lblDay2">Day 2</span>:
+                                <span id="lblMean2">--°</span>
+                                <span id="lblDIcon2"></span>
+                            </p>
+                            <p class="text-center fs-5 mb-2">
+                                <span id="lblDay3">Day 3</span>:
+                                <span id="lblMean3">--°</span>
+                                <span id="lblDIcon3"></span>
+                            </p>
+                            <p class="text-center fs-5 mb-2">
+                                <span id="lblDay4">Day 4</span>:
+                                <span id="lblMean4">--°</span>
+                                <span id="lblDIcon4"></span>
+                            </p>
+                            <p class="text-center fs-5 mb-2">
+                                <span id="lblDay5">Day 5</span>:
+                                <span id="lblMean5">--°</span>
+                                <span id="lblDIcon5"></span>
+                            </p>
+                            <p class="text-center fs-5 mb-0">
+                                <span id="lblDay6">Day 6</span>:
+                                <span id="lblMean6">--°</span>
+                                <span id="lblDIcon6"></span>
+                            </p>
                     </div>
                 </div>  
             </div>   
-            </div>
         </div>
     </div>
-    <div>
-        Everything below the scroll
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
 
 </body>
