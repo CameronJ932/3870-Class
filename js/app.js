@@ -50,6 +50,32 @@ const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.169
                 document.querySelector('#lblCurrentTemp').innerHTML = strCurrentTemp + '°'
                 document.querySelector('#lblIcon').innerHTML = '<i class="bi ' + getWeatherIcon(strCurrentWeatherCode) + '"></i>'
 
+                        for(let i = 1; i <= 6; i++) 
+        {
+            document.querySelector(`#lblMean${i}`).classList.remove('temp-hot', 'temp-warm', 'temp-cold', 'temp-cool');
+            document.querySelector(`#lblMean${i}`).classList.add(getWeatherColor(strDailyMeanTemp[i]));
+        }
+
+        function getWeatherColor(temp)
+        {
+            if(temp < 60)
+            {
+                return "temp-cold";
+            }
+            if(temp < 70)
+            {
+                return "temp-cool";
+            }
+            if(temp >= 80)
+            {
+                return "temp-hot";
+            }
+            else
+            {
+                return "temp-warm";
+            }
+        }
+
                 // Loop for the 6-day forecast
                 for(let i = 1; i <= 6; i++) {
                     const temp = Math.round(strDailyMeanTemp[i])

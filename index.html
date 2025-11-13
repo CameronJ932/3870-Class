@@ -14,7 +14,7 @@
             min-height: 100vh;
         }
 
-         body.app-background {
+        body.app-background {
             background-image: linear-gradient(to top, #0d2568, #66bff4);
             min-height: 100vh;
         }
@@ -48,6 +48,19 @@
             position: relative;
             z-index: 1;
         }
+
+        .tempbubble {
+            /*background-color: #f59e0b;*/
+            border-radius: 100% ;
+            width: 150px;
+            height: 50px; 
+        }
+
+        /* Bubble Colors */
+        .temp-hot { background-color: #ef4444; }
+        .temp-warm { background-color: #f59e0b; } 
+        .temp-cold { background-color: #3b82f6; } 
+        .temp-cool { background-color: #60a5fa; }
 
        
     </style>
@@ -89,32 +102,32 @@
                     
                         <p class="text-center fs-5 mb-2">
                                 <span id="lblDay1">Day 1</span>:
-                                <span id="lblMean1">--°</span>
+                                <span id="lblMean1" class="tempbubble">--°</span>
                                 <span id="lblDIcon1"></span>
                             </p>
                             <p class="text-center fs-5 mb-2">
                                 <span id="lblDay2">Day 2</span>:
-                                <span id="lblMean2">--°</span>
+                                <span id="lblMean2" class="tempbubble">--°</span>
                                 <span id="lblDIcon2"></span>
                             </p>
                             <p class="text-center fs-5 mb-2">
                                 <span id="lblDay3">Day 3</span>:
-                                <span id="lblMean3">--°</span>
+                                <span id="lblMean3" class="tempbubble">--°</span>
                                 <span id="lblDIcon3"></span>
                             </p>
                             <p class="text-center fs-5 mb-2">
                                 <span id="lblDay4">Day 4</span>:
-                                <span id="lblMean4">--°</span>
+                                <span id="lblMean4" class="tempbubble">--°</span>
                                 <span id="lblDIcon4"></span>
                             </p>
                             <p class="text-center fs-5 mb-2">
                                 <span id="lblDay5">Day 5</span>:
-                                <span id="lblMean5">--°</span>
+                                <span id="lblMean5" class="tempbubble">--°</span>
                                 <span id="lblDIcon5"></span>
                             </p>
                             <p class="text-center fs-5 mb-0">
                                 <span id="lblDay6">Day 6</span>:
-                                <span id="lblMean6">--°</span>
+                                <span id="lblMean6" class="tempbubble">--°</span>
                                 <span id="lblDIcon6"></span>
                             </p>
                     </div>
