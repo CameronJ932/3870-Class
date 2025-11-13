@@ -51,9 +51,10 @@
 
         .tempbubble {
             /*background-color: #f59e0b;*/
-            border-radius: 100% ;
-            width: 150px;
-            height: 50px; 
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: inline-flex; align-items: center; justify-content: center;
         }
 
         /* Bubble Colors */
@@ -95,40 +96,40 @@
                 <div>
                     <div class="forecast-header px-4 py-2 mb-3 text">
                         <div class="justify-content-left">
-                            <h2 class="text-center text-white mb-0">6 Day Forecast </h2> 
+                            <h2 class="text-center mb-0">6 Day Forecast </h2> 
                         </div> 
                     <!--Container for the Forecast List -->  
                     <div class="mt-3">
                     
-                        <p class="text-center fs-5 mb-2">
-                                <span id="lblDay1">Day 1</span>:
-                                <span id="lblMean1" class="tempbubble">--°</span>
-                                <span id="lblDIcon1"></span>
+                        <p class="text-center fs-5 mb-2 d-flex justify-content-between align-items-center">
+                                <span id="lblDay1" class="w-25 text-start">Day 1</span>
+                                <span id="lblMean1" class="tempbubble mx-2">--°</span>
+                                <span id="lblDIcon1" class="w-25 text-end fs-4"></span>
                             </p>
-                            <p class="text-center fs-5 mb-2">
-                                <span id="lblDay2">Day 2</span>:
-                                <span id="lblMean2" class="tempbubble">--°</span>
-                                <span id="lblDIcon2"></span>
+                            <p class="text-center fs-5 mb-2 d-flex justify-content-between align-items-center">
+                                <span id="lblDay2" class="w-25 text-start">Day 2</span>
+                                <span id="lblMean2" class="tempbubble mx-2">--°</span>
+                                <span id="lblDIcon2" class="w-25 text-end fs-4"></span>
                             </p>
-                            <p class="text-center fs-5 mb-2">
-                                <span id="lblDay3">Day 3</span>:
-                                <span id="lblMean3" class="tempbubble">--°</span>
-                                <span id="lblDIcon3"></span>
+                            <p class="text-center fs-5 mb-2 d-flex justify-content-between align-items-center">
+                                <span id="lblDay3" class="w-25 text-start">Day 3</span>
+                                <span id="lblMean3" class="tempbubble mx-2">--°</span>
+                                <span id="lblDIcon3" class="w-25 text-end fs-4"></span>
                             </p>
-                            <p class="text-center fs-5 mb-2">
-                                <span id="lblDay4">Day 4</span>:
-                                <span id="lblMean4" class="tempbubble">--°</span>
-                                <span id="lblDIcon4"></span>
+                            <p class="text-center fs-5 mb-2 d-flex justify-content-between align-items-center">
+                                <span id="lblDay4" class="w-25 text-start">Day 4</span>
+                                <span id="lblMean4" class="tempbubble mx-2">--°</span>
+                                <span id="lblDIcon4" class="w-25 text-end fs-4"></span>
                             </p>
-                            <p class="text-center fs-5 mb-2">
-                                <span id="lblDay5">Day 5</span>:
-                                <span id="lblMean5" class="tempbubble">--°</span>
-                                <span id="lblDIcon5"></span>
+                            <p class="text-center fs-5 mb-2 d-flex justify-content-between align-items-center">
+                                <span id="lblDay5" class="w-25 text-start">Day 5</span>
+                                <span id="lblMean5" class="tempbubble mx-2">--°</span>
+                                <span id="lblDIcon5" class="w-25 text-end fs-4"></span>
                             </p>
-                            <p class="text-center fs-5 mb-0">
-                                <span id="lblDay6">Day 6</span>:
-                                <span id="lblMean6" class="tempbubble">--°</span>
-                                <span id="lblDIcon6"></span>
+                            <p class="text-center fs-5 mb-0 d-flex justify-content-between align-items-center">
+                                <span id="lblDay6" class="w-25 text-start">Day 6</span>
+                                <span id="lblMean6" class="tempbubble mx-2">--°</span>
+                                <span id="lblDIcon6" class="w-25 text-end fs-4"></span>
                             </p>
                     </div>
                 </div>  
