@@ -2,7 +2,7 @@ const strWeatherAPIURL = 'https://api.open-meteo.com/v1/forecast?latitude=36.169
 
 getWeatherData();
 async function getWeatherData(num)
-{
+{}
     const objResponse = await fetch(strWeatherAPIURL,
     {
         method:'GET',
@@ -19,7 +19,7 @@ async function getWeatherData(num)
         alert('Error getting data')
     } 
     else
-    {
+    {}
         const objData = await objResponse.json()
         
         
