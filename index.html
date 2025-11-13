@@ -45,6 +45,12 @@
             color: rgb(132, 132, 132);
             z-index: 0;
         }
+        .cloud-down {
+            position: absolute;
+            bottom: 50px;
+            color: rgb(132, 132, 132);
+            z-index: 0;
+        }
         .text {
             position: relative;
             z-index: 1;
@@ -95,13 +101,14 @@
                 
                 <!--This is the holder for the forecast -->
                 <div>
+                    <span><i class="bi bi-cookie cloud-down" style="font-size: 200px;"></i></span>
                     <div class="forecast-header px-4 py-2 mb-3 text">
                         <div class="justify-content-left">
                             <h2 class="text-center mb-0">6 Day Forecast </h2> 
                         </div> 
                     <!--Container for the Forecast List -->  
                     <div class="mt-3">
-                    
+
                         <p class="text-center fs-5 mb-2 d-flex justify-content-between align-items-center">
                                 <span id="lblDay1" class="w-25 text-start">Day 1</span>
                                 <span id="lblMean1" class="tempbubble mx-2">--°</span>
